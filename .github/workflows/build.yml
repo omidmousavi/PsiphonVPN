@@ -21,13 +21,6 @@ jobs:
         npm install
         npm run build          
         
-    - name: Upload to release
-      uses: JasonEtco/upload-to-release@master
-      with:
-        args: ./dist/*.AppImage
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Commit and push changes
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
