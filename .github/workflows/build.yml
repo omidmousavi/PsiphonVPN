@@ -1,4 +1,4 @@
-name: NodeJS with Webpack
+name: NodeJS Build
 
 on:
   release
@@ -14,13 +14,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name : Install dependencies
-      run: npm install
-      
-    - name: Build
+    - name: Install dependencies & Build
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npm run build
+      run: |
+          npm install
+          npm run build          
 
     - name: Upload to release
       uses: JasonEtco/upload-to-release@master
