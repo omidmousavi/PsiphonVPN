@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>Psiphon VPN</title>
+  <style>
+    /* width */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #7c7c7c;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #494949;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #464646;
+    }
+
+    body {
+      background-color: #202020;
+      color: aliceblue;
+      margin: 0 auto;
+      max-width: 300px;
+      font-family: monospace;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    button {
+      width: 80%;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .textarea {
+      background-color: #202020;
+      color: gray;
+      border-top: 5px solid #7c7c7c;
+      border-left: 5px solid #7c7c7c;
+      outline: none;
+      width: 80%;
+      /* border-radius: 10px; */
+      padding: 5px;
+      font-family: monospace;
+      font-size: 13px;
+      height: 150px;
+      resize: none;
+      overflow: scroll;
+      text-align: left;
+      white-space: nowrap;
+      margin: auto;
+    }
+
+
+    .connectBtn {
+
+
+      outline: none;
+      border: none;
+      border-radius: 30px;
+
+      font-size: 17px;
+      font-family: monospace;
+      color: white;
+      font-weight: 600;
+      background: linear-gradient(to right, #4fb2ce, #2234be);
+      box-shadow: 0 10px 10px -7px rgba(97, 118, 238, 0.5);
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .connectBtn:hover {
+      box-shadow: none;
+      transform: translate(0px, 2.2px);
+    }
+
+    .connectBtn:active {
+      transform: scale(0.96) translate(0px, 3.2px);
+    }
+
+    .connecting_btn {
+      cursor: auto;
+      box-shadow: none;
+      pointer-events: none;
+    }
+
+    .connected_btn {
+      background: linear-gradient(to right, #2e703d, #105c09);
+      box-shadow: 0 20px 20px -7px rgba(21, 87, 48, 0.5);
+    }
+
+    .import-config {
+      color: #fff;
+      padding: 7px;
+      border: 0;
+      outline: none;
+      font-family: monospace;
+      background: #202020;
+      border-radius: 50px;
+      margin: 10px;
+    }
+
+    .import-config:hover {
+      background: #3b3b3b;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="center">
+    <br><br>
+    <h1>Psiphon VPN</h1>
+    <br>
+    <div>
+
+      <button class="connectBtn" id="connect">Connect</button>
+
+      <br><br>
+      <button class="import-config" id="import_config_btn">Import Psiphon config → </button>
+      <br><br>
+
+      <!-- <textarea readonly id="logs"></textarea> -->
+      <div class="textarea" id="logs"></div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

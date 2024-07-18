@@ -1,0 +1,30 @@
+{
+  "name": "PsiphonVPN",
+  "version": "1.0.0",
+  "description": "Psiphon VPN",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder -l"
+  },
+  "keywords": [
+    "VPN",
+    "Psiphon"
+  ],
+  "author": {
+    "name": "Omid",
+    "email": "omid.mousavi.1385@gmail.com"
+  },
+  "devDependencies": {
+    "electron": "^31.2.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    },
+    "extraResources": ["psiphon"]
+  }
+}
