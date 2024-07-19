@@ -20,19 +20,14 @@ jobs:
       run: |
         npm install
         npm run build          
-        
-    - name: Initialize Release
-      uses: actions/create-release@v1
-      id: create_release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
       with:
-        tag_name: ${{ github.ref }}
-        release_name: ${{ github.ref }}      
-
-    - name: Create Release    
-      uses: csexton/release-asset-action@v2
-      with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./dist/*
-          release-url: ${{ steps.create_release.outputs.upload_url }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: /dist/*
+        asset_name: mything
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "This is my release text"
