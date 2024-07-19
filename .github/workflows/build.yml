@@ -1,12 +1,15 @@
 name: NodeJS Build
 
 on:
-  workflow_dispatch
+  release:
+    types: [published]
+
 jobs:
-  build:
+  upload-release-asset:
     runs-on: ubuntu-latest
-    
+
     steps:
+    - name: Checkout repository
     - uses: actions/checkout@v4
     
     - name: Use Node.js ${{ matrix.node-version }}
@@ -21,13 +24,20 @@ jobs:
         npm install
         npm run build          
     
-    
-    - name: Upload binaries to release
-      uses: svenstaro/upload-release-action@v2
+    - name: Get the release ID
+      id: get_release
+      uses: actions/github-script@v6
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: /dist/*
-        asset_name: mything
-        tag: ${{ github.ref }}
-        overwrite: true
-        body: "This is my release text"
+        script: |
+          const release_id = context.payload.release.id;
+          core.setOutput('release_id', release_id);
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./dist/*.AppImage
+        asset_name: PsiphonVPN_Linux.AppImage
+        asset_content_type: text/plain
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
