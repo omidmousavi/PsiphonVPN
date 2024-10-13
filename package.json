@@ -16,15 +16,18 @@
     "email": "omid.mousavi.1385@gmail.com"
   },
   "devDependencies": {
+    "@electron-forge/publisher-github": "^7.4.0",
     "electron": "^31.2.1",
     "electron-builder": "^24.13.3"
   },
   "build": {
     "linux": {
       "target": [
-        "AppImage"
+        "deb"
       ]
     },
-    "extraResources": ["psiphon"]
+    "extraResources": [
+      "psiphon"
+    ]
   }
 }
